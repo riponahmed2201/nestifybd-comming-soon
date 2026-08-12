@@ -98,8 +98,36 @@ const server = http.createServer((req, res) => {
     return sendJson(res, 200, { status: 'success', subscribers: list });
   }
 
-  res.writeHead(404, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ status: 'error', message: 'Not found' }));
+  const publicRoot = __dirname;
+  let filePath = path.join(publicRoot, parsed.pathname === '/' ? 'index.html' : parsed.pathname);
+
+  if (!filePath.startsWith(publicRoot)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain' });
+    return res.end('Forbidden');
+  }
+
+  fs.stat(filePath, (err, stats) => {
+    if (err || !stats.isFile()) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      return res.end('Not found');
+    }
+
+    const ext = path.extname(filePath).toLowerCase();
+    const contentTypes = {
+      '.html': 'text/html',
+      '.css': 'text/css',
+      '.js': 'application/javascript',
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.svg': 'image/svg+xml',
+      '.json': 'application/json',
+      '.txt': 'text/plain',
+    };
+
+    res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'application/octet-stream' });
+    fs.createReadStream(filePath).pipe(res);
+  });
 });
 
 server.listen(port, () => {
