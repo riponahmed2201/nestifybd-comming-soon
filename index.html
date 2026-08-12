@@ -33,14 +33,14 @@
       body {
         font-family: "Plus Jakarta Sans", "Noto Sans Bengali", sans-serif;
         background: #f2f7f4 url("img-1.png") no-repeat center bottom;
-        background-size: 100% auto;
-        height: 100vh;
-        width: 100vw;
+        background-size: cover;
+        min-height: 100vh;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
-        overflow: hidden;
+        padding: 24px 16px 32px;
+        overflow-x: hidden;
       }
 
       .glass-panel {
@@ -54,7 +54,7 @@
           inset 0 1px 2px rgba(255, 255, 255, 0.4);
         width: 100%;
         max-width: 860px;
-        padding: 35px 50px;
+        padding: 35px 40px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -93,11 +93,12 @@
 
       .heading {
         font-family: "Playfair Display", "Noto Sans Bengali", serif;
-        font-size: 36px;
+        font-size: 34px;
         font-weight: 700;
         color: var(--primary-green);
         line-height: 1.2;
         letter-spacing: -0.03em;
+        max-width: 680px;
       }
 
       .heading span {
@@ -109,25 +110,25 @@
         color: var(--text-muted);
         font-size: 15px;
         line-height: 1.75;
-        max-width: 650px;
+        max-width: 660px;
       }
 
       .countdown-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 14px;
         width: 100%;
-        max-width: 460px;
+        max-width: 480px;
       }
 
       .time-box {
-        background: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.78);
         border-radius: 16px;
-        padding: 12px 8px;
+        padding: 12px 10px;
         box-shadow:
           0 8px 20px rgba(0, 0, 0, 0.02),
           inset 0 1px 3px rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.5);
       }
 
       .time-num {
@@ -246,41 +247,66 @@
         color: #fff;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 900px) {
         body {
           background-size: cover;
         }
         .glass-panel {
-          padding: 24px 20px;
+          padding: 28px 24px;
           gap: 16px;
         }
         .heading {
-          font-size: 28px;
+          font-size: 30px;
+        }
+        .description {
+          font-size: 15px;
+          max-width: 100%;
         }
         .countdown-container {
-          gap: 8px;
+          max-width: 100%;
+          gap: 10px;
+        }
+        .time-box {
+          padding: 12px 10px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .glass-panel {
+          padding: 22px 18px;
+          gap: 14px;
+        }
+        .heading {
+          font-size: 26px;
+        }
+        .description {
+          font-size: 14px;
+        }
+        .countdown-container {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
         }
         .time-num {
-          font-size: 20px;
+          font-size: 22px;
         }
         .cta-form {
           flex-direction: column;
           background: transparent;
           border: none;
           box-shadow: none;
-          gap: 8px;
+          gap: 10px;
           padding: 0;
         }
         .cta-form input {
-          background: rgba(255, 255, 255, 0.7);
-          border: 1px solid rgba(255, 255, 255, 0.7);
-          padding: 12px 18px;
-          border-radius: 50px;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          padding: 14px 18px;
+          border-radius: 999px;
         }
         .cta-form button {
-          padding: 12px;
           width: 100%;
-          justify-content: center;
+          padding: 14px 18px;
         }
         .panel-footer {
           flex-direction: column;
@@ -288,6 +314,54 @@
           text-align: center;
           border-top: none;
           padding-top: 0;
+        }
+        .social-icons {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding: 18px 12px 24px;
+        }
+        .glass-panel {
+          padding: 18px 14px;
+          gap: 14px;
+        }
+        .heading {
+          font-size: 22px;
+          line-height: 1.25;
+        }
+        .description {
+          font-size: 14px;
+          line-height: 1.65;
+        }
+        .countdown-container {
+          grid-template-columns: 1fr;
+          max-width: 100%;
+        }
+        .time-box {
+          padding: 14px 12px;
+        }
+        .time-num {
+          font-size: 24px;
+        }
+        .cta-form {
+          width: 100%;
+          padding: 0;
+        }
+        .cta-form input,
+        .cta-form button {
+          width: 100%;
+        }
+        .panel-footer {
+          padding-top: 10px;
+        }
+        .social-icons {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 10px;
         }
       }
     </style>
