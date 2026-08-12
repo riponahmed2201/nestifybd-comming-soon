@@ -4,7 +4,11 @@
   "description": "NestifyBD coming soon landing page with local subscribe server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "pm2-start": "pm2 start ecosystem.config.js",
+    "pm2-stop": "pm2 stop ecosystem.config.js",
+    "pm2-restart": "pm2 restart ecosystem.config.js",
+    "pm2-delete": "pm2 delete ecosystem.config.js"
   },
   "dependencies": {}
 }
