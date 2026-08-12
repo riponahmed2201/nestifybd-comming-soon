@@ -159,8 +159,8 @@
       }
 
       .cta-form input {
-        flex: 1 1 55%;
-        min-width: 200px;
+        flex: 1 1 auto;
+        min-width: 180px;
         background: transparent;
         border: none;
         outline: none;
@@ -182,11 +182,13 @@
       }
 
       .cta-form button {
+        flex: 0 0 auto;
+        white-space: nowrap;
         background: var(--accent-gradient);
         color: #fff;
         border: none;
         outline: none;
-        padding: 12px 16px;
+        padding: 12px 18px;
         border-radius: 50px;
         font-size: 13px;
         font-weight: 700;
@@ -195,7 +197,6 @@
         justify-content: center;
         align-items: center;
         gap: 8px;
-        min-width: 140px;
         box-shadow: 0 4px 12px rgba(217, 119, 36, 0.25);
         transition: all 0.2s ease;
       }
@@ -408,10 +409,11 @@
         localStorage.setItem("nestifybd_subscribed_email", email);
       }
 
-      function showSubscriptionMessage(text) {
+      function showSubscriptionMessage(text, isError = false) {
         const messageEl = document.getElementById("subscription-message");
         if (messageEl) {
           messageEl.innerText = text;
+          messageEl.style.color = isError ? "#b55d14" : "var(--primary-green)";
         }
       }
 
@@ -422,19 +424,37 @@
         }
       }
 
-      function handleSubscription(event) {
+      async function handleSubscription(event) {
         event.preventDefault();
         const input = document.getElementById("subscription-email");
         if (!input) return;
 
         const email = input.value.trim();
         if (!email) {
-          showSubscriptionMessage("দয়া করে একটি ইমেইল ঠিকানা লিখুন।");
+          showSubscriptionMessage("দয়া করে একটি ইমেইল ঠিকানা লিখুন।", true);
           return;
         }
 
-        saveSubscription(email);
-        showSubscriptionMessage(`ধন্যবাদ! সাবস্ক্রিপশন সফল হয়েছে: ${email}`);
+        try {
+          const response = await fetch("http://localhost:3000/subscribe", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          });
+
+          const result = await response.json();
+          if (!response.ok || result.status !== "success") {
+            showSubscriptionMessage(result.message || "সাবস্ক্রিপশনে সমস্যা হয়েছে।", true);
+            return;
+          }
+
+          saveSubscription(email);
+          showSubscriptionMessage(`ধন্যবাদ! সাবস্ক্রিপশন সফল হয়েছে: ${email}`);
+        } catch (error) {
+          showSubscriptionMessage("সার্ভারে সংযোগ করা যাচ্ছে না।", true);
+        }
       }
 
       document.addEventListener("DOMContentLoaded", () => {

@@ -1,0 +1,10 @@
+{
+  "name": "nestifybd-comming-soon",
+  "version": "1.0.0",
+  "description": "NestifyBD coming soon landing page with local subscribe server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
