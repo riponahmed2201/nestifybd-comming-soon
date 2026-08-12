@@ -1,0 +1,10 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+    AddType 'text/html; charset=UTF-8' html
+    AddType 'text/html; charset=UTF-8' htm
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Content-Type "text/html; charset=UTF-8"
+</IfModule>

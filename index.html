@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NestifyBD - শীঘ্রই আসছে | আমাদের লঞ্চ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-green: #113825;
+        --accent-orange: #d97724;
+        --accent-gradient: linear-gradient(135deg, #e07a2f, #c76313);
+        --text-dark: #1c2d24;
+        --text-muted: #4a5d53;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", "Noto Sans Bengali", sans-serif;
+        background: #f2f7f4 url("img-1.png") no-repeat center bottom;
+        background-size: 100% auto;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 24px;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.05),
+          inset 0 1px 2px rgba(255, 255, 255, 0.4);
+        width: 100%;
+        max-width: 860px;
+        padding: 35px 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo-container img {
+        max-width: 160px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .tagline {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary-green);
+        opacity: 0.9;
+        margin-top: -5px;
+      }
+
+      .badge {
+        background: rgba(217, 119, 36, 0.12);
+        color: #b55d14;
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid rgba(217, 119, 36, 0.15);
+      }
+
+      .heading {
+        font-family: "Playfair Display", "Noto Sans Bengali", serif;
+        font-size: 42px;
+        font-weight: 700;
+        color: var(--primary-green);
+        line-height: 1.2;
+      }
+
+      .heading span {
+        color: var(--accent-orange);
+        font-style: italic;
+      }
+
+      .description {
+        color: var(--text-muted);
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 600px;
+      }
+
+      .countdown-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        width: 100%;
+        max-width: 460px;
+      }
+
+      .time-box {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 16px;
+        padding: 12px 8px;
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.02),
+          inset 0 1px 3px rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .time-num {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-green);
+        line-height: 1.1;
+      }
+
+      .time-label {
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        margin-top: 2px;
+      }
+
+      .cta-form {
+        display: flex;
+        width: 100%;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 50px;
+        padding: 5px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+      }
+
+      .cta-form input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0 18px;
+        font-family: inherit;
+        font-size: 13px;
+        color: var(--text-dark);
+      }
+
+      .cta-form input::placeholder {
+        color: #7a8e83;
+      }
+
+      .cta-form button {
+        background: var(--accent-gradient);
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(217, 119, 36, 0.25);
+        transition: all 0.2s ease;
+      }
+
+      .cta-form button:hover {
+        opacity: 0.95;
+        transform: scale(1.01);
+      }
+
+      .panel-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 18px;
+        margin-top: 5px;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--primary-green);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .social-btn {
+        width: 26px;
+        height: 26px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--primary-green);
+        text-decoration: none;
+        font-size: 11px;
+        transition: all 0.2s ease;
+      }
+
+      .social-btn:hover {
+        background: var(--primary-green);
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background-size: cover;
+        }
+        .glass-panel {
+          padding: 24px 20px;
+          gap: 16px;
+        }
+        .heading {
+          font-size: 28px;
+        }
+        .countdown-container {
+          gap: 8px;
+        }
+        .time-num {
+          font-size: 20px;
+        }
+        .cta-form {
+          flex-direction: column;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          gap: 8px;
+          padding: 0;
+        }
+        .cta-form input {
+          background: rgba(255, 255, 255, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.7);
+          padding: 12px 18px;
+          border-radius: 50px;
+        }
+        .cta-form button {
+          padding: 12px;
+          width: 100%;
+          justify-content: center;
+        }
+        .panel-footer {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+          border-top: none;
+          padding-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glass-panel">
+      <div class="logo-container">
+        <img src="logo.png" alt="NestifyBD লোগো" />
+      </div>
+      <div class="tagline">শীঘ্রই আসছে — অপেক্ষা করুন</div>
+
+      <div>
+        <div class="badge"><span>নতুন</span> সাইনআপ খোলা</div>
+      </div>
+
+      <h1 class="heading">
+        আপনার ডিজিটাল <span>হোম</span><br />শীঘ্রই চালু
+      </h1>
+
+      <p class="description">
+        NestifyBD শীঘ্রই লঞ্চ করতে যাচ্ছে। আমরা এমন একটি প্ল্যাটফর্ম
+        তৈরি করছি যা আপনার অনলাইন উপস্থিতি সহজ ও দক্ষ করবে। নিচে আপনার
+        ইমেইল দিন — লঞ্চের আপডেট পৌঁছে দেয়া হবে।
+      </p>
+
+      <div class="countdown-container">
+        <div class="time-box">
+          <div class="time-num" id="days">00</div>
+          <div class="time-label">দিন</div>
+        </div>
+        <div class="time-box">
+          <div class="time-num" id="hours">00</div>
+          <div class="time-label">ঘন্টা</div>
+        </div>
+        <div class="time-box">
+          <div class="time-num" id="minutes">00</div>
+          <div class="time-label">মিনিট</div>
+        </div>
+        <div class="time-box">
+          <div class="time-num" id="seconds">00</div>
+          <div class="time-label">সেকেন্ড</div>
+        </div>
+      </div>
+
+      <form
+        class="cta-form"
+        onsubmit="
+          event.preventDefault();
+          alert('ধন্যবাদ! আমরা আপনাকে অবহিত করব।');
+        "
+      >
+        <input type="email" placeholder="আপনার ইমেইল লিখুন" required />
+        <button type="submit">
+          অবহিত করুন <i class="fa-regular fa-bell"></i>
+        </button>
+      </form>
+
+      <div class="panel-footer">
+        <div>© 2026 NestifyBD</div>
+        <div class="social-icons">
+          <a href="#" class="social-btn"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" class="social-btn"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" class="social-btn"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+        </div>
+        <div>আমাদের অনুসরণ করুন</div>
+      </div>
+    </div>
+
+    <script>
+      function initializeCountdown() {
+        // Fixed launch target: September 1, 2026, 00:00:00 local time
+        const targetTime = new Date("2026-09-01T00:00:00").getTime();
+
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        function updateTimer() {
+          const now = new Date().getTime();
+          const difference = targetTime - now;
+
+          if (difference <= 0) {
+            clearInterval(intervalId);
+            daysEl.innerText = "00";
+            hoursEl.innerText = "00";
+            minutesEl.innerText = "00";
+            secondsEl.innerText = "00";
+            return;
+          }
+
+          const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const h = Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+          daysEl.innerText = d < 10 ? "0" + d : d;
+          hoursEl.innerText = h < 10 ? "0" + h : h;
+          minutesEl.innerText = m < 10 ? "0" + m : m;
+          secondsEl.innerText = s < 10 ? "0" + s : s;
+        }
+
+        updateTimer();
+        const intervalId = setInterval(updateTimer, 1000);
+      }
+
+      document.addEventListener("DOMContentLoaded", initializeCountdown);
+    </script>
+  </body>
+</html>
